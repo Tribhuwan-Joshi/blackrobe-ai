@@ -40,10 +40,10 @@ function AuthMask() {
 function AuthButtons() {
   return (
     <div className={`${poppins.className} w-full flex justify-center gap-6`}>
-      <button className="text-white bg-[#8738EB] text-xl px-10 py-2 font-semibold rounded-lg ">
+      <button className="text-white bg-[#8738EB] text-xl px-6 md:px-10 py-2 font-semibold rounded-lg ">
         Log In
       </button>
-      <button className="text-[#8738EB] border border-[#8738EB] text-xl px-10 py-2 hover:bg-[#8738EB] hover:text-white transition font-semibold rounded-lg ">
+      <button className="text-[#8738EB] border border-[#8738EB] text-xl px-6 md:px-10 py-2 hover:bg-[#8738EB] hover:text-white transition font-semibold rounded-lg ">
         Sign Up
       </button>
     </div>
