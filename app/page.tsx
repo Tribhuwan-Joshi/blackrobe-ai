@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Image from "next/image";
-import Blackrobe from "../public/BlackRobe-logo.png";
+import Blackrobe from "../public/Blackrobe-logo.png";
 import localFont from "next/font/local";
 import { Poppins } from "next/font/google";
 
