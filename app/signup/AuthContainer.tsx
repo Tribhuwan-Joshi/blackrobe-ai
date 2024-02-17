@@ -15,13 +15,13 @@ const AuthContainer = () => {
         <h2
           className={`${openSans.className} text-center mb-6 font-semibold text-2xl md:text-3xl text-white`}
         >
-          Log in
+          Create your account
         </h2>
         <Input />
         <p className="text-[#a8a6a6] whitespace-nowrap">
-          Don&apos;t have an account?{" "}
-          <Link href="/signup" className="hover:underline  cursor-pointer ml-2">
-            Sign up
+          Already have an account?{" "}
+          <Link href="/login" className="hover:underline  cursor-pointer ml-2">
+            Log in
           </Link>
         </p>
         <div className="flex items-center mt-4">
@@ -73,5 +73,4 @@ function OAuthBtn({ text, imgSrc }: { text: string; imgSrc: StaticImageData }) {
     </button>
   );
 }
-
 export default AuthContainer;

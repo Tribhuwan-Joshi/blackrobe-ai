@@ -5,9 +5,9 @@ import AuthContainer from "./AuthContainer";
 
 const Login = () => {
   return (
-    <div className="min-h-dvh flex items-center  bg-no-repeat bg-cover  bg-[url('../public/theme.jpg')]">
+    <div className="max-h-[100vh] flex items-center  bg-no-repeat bg-cover  bg-[url('../public/theme.jpg')]">
       <AuthContainer />
-      <div className=" hidden   md:flex flex-[4] ">
+      <div className=" hidden max-h-[100vh]  md:flex flex-[4] ">
         <Image src={bgImg} className="bg-center  max-h-full" alt="bg-img" />
       </div>
     </div>

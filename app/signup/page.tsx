@@ -1,4 +1,21 @@
-const Signup = () => {
-  return <div>Signup</div>;
+import bgImg from "@/public/authImg.png";
+import { Metadata } from "next";
+import Image from "next/image";
+import AuthContainer from "./AuthContainer";
+
+const SignUp = () => {
+  return (
+    <div className="max-h-[100vh] flex items-center  bg-no-repeat bg-cover  bg-[url('../public/theme.jpg')]">
+      <AuthContainer />
+      <div className=" hidden max-h-[100vh]  md:flex flex-[4] ">
+        <Image src={bgImg} className="bg-center  max-h-full" alt="bg-img" />
+      </div>
+    </div>
+  );
 };
-export default Signup;
+
+export const metadata: Metadata = {
+  title: "Sign up - Blackrobe",
+  description: "create new account on blackrobe",
+};
+export default SignUp;
