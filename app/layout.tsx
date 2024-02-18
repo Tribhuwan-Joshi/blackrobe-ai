@@ -1,9 +1,8 @@
-
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { Metadata } from "next";
 
 const inter = Inter({ subsets: ["latin"] });
-
 
 export default function RootLayout({
   children,
@@ -16,3 +15,9 @@ export default function RootLayout({
     </html>
   );
 }
+
+export const metadata: Metadata = {
+  title: "Blackrobe",
+  description:
+    "Welcome to BlackRobe, your trusted ally in crafting legally binding contracts with the power of AI.",
+};
