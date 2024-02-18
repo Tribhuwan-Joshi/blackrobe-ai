@@ -12,13 +12,20 @@ const poppins = Poppins({ weight: ["600"], subsets: ["latin"] });
 export function AuthMask() {
   return (
     <div
-      className={`flex flex-col justify-center -mt-12 ${nexa.className} items-center gap-8`}
+      className={`flex h-[100vh] flex-col items-center justify-center  pb-16 ${nexa.className}  gap-10`}
     >
-      <Image src={Blackrobe} width={128} alt="logo" priority />
-      <p className="uppercase text-center leading-6 font-semibold text-xl md:text-3xl tracking-wide text-white">
-        Welcome to Blackrobe
-      </p>
-      <AuthButtons />
+      <Image
+        src={Blackrobe}
+        className="w-24 md:w-32 -mt-8"
+        alt="logo"
+        priority
+      />
+      <div className="space-y-6 md:space-y-8">
+        <p className="uppercase text-center leading-6 font-semibold text-xl md:text-3xl tracking-wide text-white">
+          Welcome to Blackrobe
+        </p>
+        <AuthButtons />
+      </div>
     </div>
   );
 }
