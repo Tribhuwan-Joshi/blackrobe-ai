@@ -4,12 +4,7 @@ import Image from "next/image";
 import AuthContainer from "../components/AuthContainer";
 
 const Login = () => {
-  return (
-    <div className=" flex min-h-[100lvh] items-center  bg-no-repeat bg-cover  bg-[url('../public/theme.jpg')]">
-      <AuthContainer routeName="login" routeText="Don't have an account?" />
-      <div className="hidden flex-[3] md:block bg-cover bg-center bg-[url('../public/authImg.png')]  min-h-[100lvh]  "></div>
-    </div>
-  );
+  return <AuthContainer routeName="login" routeText="Don't have an account?" />;
 };
 
 export const metadata: Metadata = {
