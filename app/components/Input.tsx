@@ -8,7 +8,7 @@ export default function Input() {
 
   return (
     <div className="flex w-full space-y-6 flex-col">
-      <div className="w-full gap-3 flex flex-col">
+      <div className="w-full  gap-3 flex flex-col">
         <input
           className="rounded-lg  text-white  placeholder-white focus:placeholder-opacity-60 outline-none  py-[8px] px-3 inset-1 bg-transparent border border-[#8738EB]"
           placeholder="Email address"
@@ -17,15 +17,15 @@ export default function Input() {
         />
 
         <div
-          className=" flex items-center  rounded-lg
-border border-[#8738EB] py-[8px] px-3 inset-1 "
+          className=" flex items-center    rounded-lg
+border border-[#8738EB] py-[8px] px-3 inset-1 justify-between "
         >
           <input
-            className="  text-white  placeholder-white focus:placeholder-opacity-60 outline-none   bg-transparent "
+            className="max-w-full  text-white  placeholder-white focus:placeholder-opacity-60 outline-none   bg-transparent "
             placeholder="Password"
             type={show ? "text" : "password"}
           />
-          <button className="ml-auto" onClick={() => setShow((prev) => !prev)}>
+          <button onClick={() => setShow((prev) => !prev)}>
             {show ? (
               <FaRegEye color="white" />
             ) : (
