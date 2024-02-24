@@ -1,5 +1,7 @@
+"use client";
 import Image, { StaticImageData } from "next/image";
-
+import { signIn } from "next-auth/react";
+import { redirect, useRouter } from "next/navigation";
 export default function OAuthBtn({
   text,
   imgSrc,
@@ -7,8 +9,26 @@ export default function OAuthBtn({
   text: string;
   imgSrc: StaticImageData;
 }) {
+  const router = useRouter();
+  const handleClick = async () => {
+    try {
+      if (text.includes("Google")) {
+        await signIn("google");
+        redirect("/");
+      }
+      if (text.includes("LinkedIn")) {
+        await signIn("linkedin");
+        redirect("/");
+      }
+    } catch (err) {
+      console.log("Error occured");
+    }
+  };
   return (
-    <button className="flex p-2 md:py-3 min-w-max group flex-col justify-center relative border border-[#8738EB] rounded-md ">
+    <button
+      onClick={handleClick}
+      className="flex p-2 md:py-3 min-w-max group flex-col justify-center relative border border-[#8738EB] rounded-md "
+    >
       <div className="flex gap-2  items-center">
         <Image src={imgSrc} width={20} alt="icon" />
         <p className="text-white whitespace-nowrap">
