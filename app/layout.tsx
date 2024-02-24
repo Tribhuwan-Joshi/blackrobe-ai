@@ -20,4 +20,5 @@ export const metadata: Metadata = {
   title: "Blackrobe",
   description:
     "Welcome to BlackRobe, your trusted ally in crafting legally binding contracts with the power of AI.",
+  metadataBase: new URL("http://localhost:3000"),
 };
