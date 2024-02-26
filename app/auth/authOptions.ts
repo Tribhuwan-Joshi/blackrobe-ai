@@ -1,5 +1,5 @@
 import GoogleProvider from "next-auth/providers/google";
-import LinkedInProvider from "next-auth/providers/linkedin";
+import GitHubProvider from "next-auth/providers/github";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { NextAuthOptions } from "next-auth";
 import bcrypt from "bcrypt";
@@ -13,9 +13,9 @@ const authOptions: NextAuthOptions = {
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     }),
-    LinkedInProvider({
-      clientId: process.env.LINKEDIN_CLIENT_ID!,
-      clientSecret: process.env.LINKEDIN_CLIENT_SECRET!,
+    GitHubProvider({
+      clientId: process.env.GITHUB_ID!,
+      clientSecret: process.env.GITHUB_SECRET!,
     }),
     CredentialsProvider({
       name: "Credentials",
@@ -30,7 +30,7 @@ const authOptions: NextAuthOptions = {
           where: { email },
         });
         if (user && bcrypt.compareSync(password, user.hashedPassword!)) {
-          return { id: user.id, name: user.name, email: user.email };
+          return { id: user.id, email: user.email };
         }
         throw new Error("Invalid credentials");
       },

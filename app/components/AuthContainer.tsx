@@ -1,13 +1,11 @@
 import Image from "next/image";
 import logo from "@/public/Blackrobe-logo.png";
 import { Open_Sans } from "next/font/google";
-import googleIcon from "@/public/Google.png";
-import linkedinIcon from "@/public/linkedin.png";
+
 import Link from "next/link";
 import OAuthBtn from "./OAuthBtn";
 import AuthPageCrousel from "./AuthPageCrousel";
 import Input from "./Input";
-
 const openSans = Open_Sans({ subsets: ["latin"] });
 
 const AuthContainer = ({
@@ -49,8 +47,8 @@ const AuthContainer = ({
         </div>
 
         <div className="my-3  md:my-6 w-1/2 flex flex-col space-y-4">
-          <OAuthBtn imgSrc={googleIcon} text="Continue with Google" />
-          <OAuthBtn imgSrc={linkedinIcon} text="Continue with LinkedIn" />
+          <OAuthBtn provider="google" text="Continue with Google" />
+          <OAuthBtn provider="github" text="Continue with Github" />
         </div>
       </div>
       <AuthPageCrousel />

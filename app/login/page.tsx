@@ -1,9 +1,13 @@
-import bgImg from "@/public/authImg.png";
 import { Metadata } from "next";
-import Image from "next/image";
 import AuthContainer from "../components/AuthContainer";
+import { useRouter } from "next/router";
+import { getServerSession } from "next-auth";
+import authOptions from "../auth/authOptions";
+import { redirect } from "next/navigation";
 
-const Login = () => {
+const Login = async () => {
+  const session = await getServerSession(authOptions);
+  if (session) redirect("/");
   return <AuthContainer routeName="login" routeText="Don't have an account?" />;
 };
 
