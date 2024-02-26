@@ -12,7 +12,6 @@ export const POST = async (req: NextRequest) => {
       data: { email, hashedPassword },
     });
   } catch (error) {
-    console.log(error);
     return NextResponse.json({ message: "Server Error" }, { status: 500 });
   } finally {
     await prisma?.$disconnect();

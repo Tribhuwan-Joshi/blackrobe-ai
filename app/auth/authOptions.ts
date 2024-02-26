@@ -32,7 +32,8 @@ const authOptions: NextAuthOptions = {
         if (user && bcrypt.compareSync(password, user.hashedPassword!)) {
           return { id: user.id, email: user.email };
         }
-        throw new Error("Invalid credentials");
+
+        return null;
       },
     }),
   ],
