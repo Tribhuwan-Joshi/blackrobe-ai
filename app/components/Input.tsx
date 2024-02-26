@@ -40,6 +40,7 @@ export default function Input() {
         // Register a new user if it's the signup page
         const res = await axios.post("/api/register", { email, password });
         setProcessing(false);
+        router.push("/");
         // Handle successful registration, e.g., show a success message or redirect the user
       } else {
         // Log in the user if it's the login page
@@ -53,7 +54,7 @@ export default function Input() {
           });
           setProcessing(false);
           if (res?.status == 401) setError("Invalid Credentials");
-          else redirect("/");
+          else router.push("/");
           // Handle successful login, e.g., show a success message or redirect the user
         } catch (err: any) {
           setProcessing(false);
