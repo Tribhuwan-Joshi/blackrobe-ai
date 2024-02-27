@@ -1,4 +1,3 @@
-import { Session } from "inspector";
 import { getServerSession } from "next-auth";
 import LogoutBtn from "../components/Logout";
 import { redirect } from "next/navigation";

@@ -38,9 +38,16 @@ export default function Input() {
       if (pathname === "/signup") {
         setProcessing(true);
         // Register a new user if it's the signup page
-        await axios.post("/api/register", { email, password });
+        const res = await axios.post("/api/register", { email, password });
         setProcessing(false);
-        router.push("/");
+        if (res.status == 201) {
+          await signIn("credentials", {
+            email,
+            password,
+            redirect: false,
+          });
+          router.push("/home");
+        }
         // Handle successful registration, e.g., show a success message or redirect the user
       } else {
         // Log in the user if it's the login page

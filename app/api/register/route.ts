@@ -23,6 +23,7 @@ export const POST = async (req: NextRequest) => {
         hashedPassword,
       },
     });
+
     return NextResponse.json({ newUser }, { status: 201 });
   } catch (error) {
     return NextResponse.json({ message: "Server Error" }, { status: 500 });
