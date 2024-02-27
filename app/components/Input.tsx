@@ -54,8 +54,7 @@ export default function Input() {
           });
           setProcessing(false);
           if (res?.status == 401) setError("Invalid Credentials");
-          router.push("/");
-          router.refresh();
+          else router.push("/home");
 
           // Handle successful login, e.g., show a success message or redirect the user
         } catch (err: any) {
@@ -74,8 +73,12 @@ export default function Input() {
 
   return (
     <div className="flex w-full space-y-6 flex-col">
-      <form className="w-full min-w-max gap-3 flex flex-col">
+      <form
+        autoComplete="false"
+        className="w-full min-w-max gap-3 flex flex-col"
+      >
         <input
+          autoFocus={true}
           name="email"
           autoComplete="false"
           className="rounded-lg  text-white  placeholder-white focus:placeholder-opacity-60 outline-none  py-[8px] px-3 inset-1 bg-transparent border border-[#8738EB]"
