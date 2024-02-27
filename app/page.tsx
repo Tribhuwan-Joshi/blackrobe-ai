@@ -3,7 +3,8 @@ import { Metadata } from "next";
 import { AuthMask } from "./AuthMask";
 import { getServerSession } from "next-auth";
 import authOptions from "./auth/authOptions";
-import LogoutBtn from "./components/Logout";
+import HomePage from "./home/page";
+import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "Blackrobe",
@@ -16,17 +17,11 @@ export const metadata: Metadata = {
 
 export default async function Home() {
   const session = await getServerSession(authOptions);
-  if (session)
-    return (
-      <div className="bg-[url('../public/theme.jpg')]  flex items-center justify-center h-[100vh] w-[100vw] bg-no-repeat bg-cover">
-        <div className="bg-white">
-          Welcome {JSON.stringify(session.user?.email)}
-        </div>
-        <LogoutBtn />
-      </div>
-    );
+  if (session) {
+    redirect("/home");
+  }
   return (
-    <div className="bg-[url('../public/theme.jpg')] flex items-center justify-center  bg-no-repeat bg-cover">
+    <div className="h-[100vh]  bg-[url('../public/theme.jpg')]  flex items-center justify-center  bg-no-repeat bg-cover">
       <AuthMask />
     </div>
   );

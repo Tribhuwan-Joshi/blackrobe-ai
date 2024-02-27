@@ -12,7 +12,7 @@ const poppins = Poppins({ weight: ["600"], subsets: ["latin"] });
 export function AuthMask() {
   return (
     <div
-      className={`flex h-[100vh] flex-col items-center justify-center  pb-16 ${nexa.className}  gap-10`}
+      className={`flex flex-col items-center justify-center  pb-16 ${nexa.className}  gap-10`}
     >
       <Image
         src={Blackrobe}

@@ -1,7 +1,7 @@
 "use client";
 
 import { signIn } from "next-auth/react";
-import { redirect, usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { FaRegEye } from "react-icons/fa6";
 import { FaRegEyeSlash } from "react-icons/fa6";
@@ -38,7 +38,7 @@ export default function Input() {
       if (pathname === "/signup") {
         setProcessing(true);
         // Register a new user if it's the signup page
-        const res = await axios.post("/api/register", { email, password });
+        await axios.post("/api/register", { email, password });
         setProcessing(false);
         router.push("/");
         // Handle successful registration, e.g., show a success message or redirect the user
@@ -54,7 +54,9 @@ export default function Input() {
           });
           setProcessing(false);
           if (res?.status == 401) setError("Invalid Credentials");
-          else router.push("/");
+          router.push("/");
+          router.refresh();
+
           // Handle successful login, e.g., show a success message or redirect the user
         } catch (err: any) {
           setProcessing(false);
