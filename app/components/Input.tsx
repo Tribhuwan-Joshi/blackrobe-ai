@@ -86,9 +86,9 @@ export default function Input() {
       >
         <input
           autoFocus={true}
-          name="email"
           autoComplete="off"
-          className="rounded-lg  text-white  placeholder-white focus:placeholder-opacity-60 outline-none  py-[8px] px-3 inset-1 bg-transparent border border-[#8738EB]"
+          name="email"
+          className="rounded-lg  text-white autofill:active:!bg-transparent autofill:focus:bg-transparent! placeholder-white bg-transparent focus:placeholder-opacity-60 outline-none  py-[8px] px-3 inset-1  border border-[#8738EB]"
           placeholder="Email address *"
           type="email"
           required

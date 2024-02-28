@@ -1,14 +1,13 @@
 import { getServerSession } from "next-auth";
-import LogoutBtn from "../components/Logout";
 import { redirect } from "next/navigation";
+import Sidebar from "./sidebar";
 
 const HomePage = async () => {
   const session = await getServerSession()!;
   if (!session) redirect("/");
   return (
-    <div className=" h-[100vh]  bg-[url('../public/theme.jpg')] flex items-center justify-center  bg-no-repeat bg-cover">
-      <p className="text-white">Welcome {session?.user?.email}</p>
-      <LogoutBtn />
+    <div className=" h-[100vh]  bg-[url('../public/theme.jpg')] flex items-center   bg-no-repeat bg-cover">
+      <Sidebar email={session?.user?.email!} />
     </div>
   );
 };
