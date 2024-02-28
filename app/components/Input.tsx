@@ -126,7 +126,7 @@ border border-[#8738EB] py-[8px] px-3 inset-1 justify-between "
             )}
           </button>
         </div>
-        {error ? <p className="text-red-400">{error}</p> : <></>}
+        {error ? <p className="text-red-300">{error}</p> : <></>}
         <button
           disabled={processing}
           onClick={handleContinue}
