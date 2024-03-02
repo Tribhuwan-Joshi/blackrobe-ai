@@ -7,7 +7,7 @@ const HomePage = async () => {
   const session = await getServerSession()!;
   if (!session) redirect("/");
   return (
-    <div className=" h-[100vh]  bg-[url('../public/theme.jpg')]  flex items-center   bg-no-repeat bg-cover">
+    <div className=" h-[100vh] p-2 sm:p-0  bg-[url('../public/theme.jpg')]  flex items-center   bg-no-repeat bg-cover">
       <Sidebar email={session?.user?.email!} />
       <ChatContainer />
     </div>
