@@ -4,7 +4,7 @@ import blackrobeIcon from "@/public/blackrobe-bot.png";
 
 const ChatContainer = () => {
   return (
-    <div className="chat-container flex overflow-auto space-y-3 relative flex-col gap px-2 py-4  mx-auto  rounded-lg w-full sm:w-2/3  h-[95%]  border border-white bg-[#2d2d2d56]   bg-center  ">
+    <div className=" S chat-container flex overflow-auto space-y-3 relative flex-col gap px-2 py-4  mx-auto  rounded-lg w-full sm:w-2/3  h-[95%]  border border-white bg-[#2d2d2d56]   bg-center  ">
       <BotReply text="Welcome to Blackrobe, your personalized contract generator." />
       <BotReply
         text="Select type of contract to generate :-"
@@ -26,6 +26,8 @@ const ChatContainer = () => {
           "Agency Agreement",
         ]}
       />
+
+      <ChatInput />
     </div>
   );
 };
