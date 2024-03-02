@@ -4,19 +4,51 @@ import blackrobeIcon from "@/public/blackrobe-bot.png";
 
 const ChatContainer = () => {
   return (
-    <div className=" flex relative flex-col px-2 py-4  mx-auto  rounded-lg w-full sm:w-2/3  h-4/5  border border-white bg-[#2d2d2d56]   bg-center  ">
+    <div className=" flex overflow-auto relative flex-col px-2 py-4  mx-auto  rounded-lg w-full sm:w-2/3  h-[95%]  border border-white bg-[#2d2d2d56]   bg-center  ">
       <BotReply text="Welcome to Blackrobe, your personalized contract generator." />
+      <BotReply
+        text="Select type of contract to generate :-"
+        options={[
+          "Non-Disclosure Agreement (NDA)",
+          "Service Agreement",
+          "Employment Contract",
+          "Freelance Contract",
+          "Sales Contract",
+          "Investor Agreement",
+          "Insurance Agreement",
+          "Lease Agreement",
+          "Joint Venture Agreement",
+          "Licensing Agreement",
+          "Mortgage Contract",
+          "Supply Agreement",
+          "Maintenance Contract",
+          "Outsourcing Agreement",
+          "Agency Agreement",
+        ]}
+      />
     </div>
   );
 };
 
-function BotReply({ text }: { text: string }) {
+function BotReply({ text, options }: { text: string; options?: string[] }) {
   return (
-    <div className="bot-reply flex  items-center gap-8 text-xl bg-[#bebebe58] py-2 p-1 w-[80%]  rounded-md text-white ">
-      <div className="bg-[#fffefe] rounded-md px-2 max-w-max p-1">
-        <Image src={blackrobeIcon} width={36} height={36} alt="Icon" />
+    <div className="bot-reply items-center my-5 flex   gap-8 text-lg bg-[#bebebe58] py-2 p-1 w-[80%]  rounded-md text-white ">
+      <div className="bg-[#fffefe] max-h-max self-start rounded-md px-2 max-w-max p-1">
+        <Image src={blackrobeIcon} width={32} alt="Icon" />
       </div>
-      <p>{text}</p>
+      <div className="space-y-2">
+        <p>{text}</p>
+
+        {options?.length && (
+          <ul className="space-y-1">
+            {options.map((o, i) => (
+              <li key={i}>
+                {i + 1}. {o}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
     </div>
   );
 }
