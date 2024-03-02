@@ -2,7 +2,7 @@ import { BsSend } from "react-icons/bs";
 
 const ChatInput = () => {
   return (
-    <div className="w-[90%] absolute bottom-4  flex-1 flex items-end justify-center">
+    <div className="w-[90%] absolute  bottom-4  flex-1 flex items-end justify-center">
       <div className="w-full p-2  rounded-md px-1 justify-center items-center flex gap-4 bg-[#8c40ef62] ">
         {/* Replace input with textarea for multiline input */}
         <textarea
