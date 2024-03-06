@@ -1,6 +1,6 @@
-import Image from "next/image";
+import BotReply from "../components/BotReply";
+import UserReply from "../components/UserReply";
 import ChatInput from "./ChatInput";
-import blackrobeIcon from "@/public/blackrobe-bot.png";
 
 const ChatContainer = () => {
   return (
@@ -27,54 +27,11 @@ const ChatContainer = () => {
             "Agency Agreement",
           ]}
         />
-        <BotReply
-          text="Select type of contract to generate :-"
-          options={[
-            "Non-Disclosure Agreement (NDA)",
-            "Service Agreement",
-            "Employment Contract",
-            "Freelance Contract",
-            "Sales Contract",
-            "Investor Agreement",
-            "Insurance Agreement",
-            "Lease Agreement",
-            "Joint Venture Agreement",
-            "Licensing Agreement",
-            "Mortgage Contract",
-            "Supply Agreement",
-            "Maintenance Contract",
-            "Outsourcing Agreement",
-            "Agency Agreement",
-          ]}
-        />
       </div>
-
+      <UserReply text="Alpha beta when u hear me count to four sedate till i am normal" />
       <ChatInput />
     </div>
   );
 };
-
-function BotReply({ text, options }: { text: string; options?: string[] }) {
-  return (
-    <div className="bot-reply items-center  flex   gap-8 text-lg bg-[#bebebe58] py-2 p-1 md:w-[80%]  rounded-md text-white ">
-      <div className="bg-[#fffefe] max-h-max self-start rounded-md px-2 max-w-max p-1">
-        <Image src={blackrobeIcon} width={32} alt="Icon" />
-      </div>
-      <div className="space-y-2">
-        <p>{text}</p>
-
-        {options?.length && (
-          <ul className="space-y-1">
-            {options.map((o, i) => (
-              <li key={i}>
-                {i + 1}. {o}
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
-    </div>
-  );
-}
 
 export default ChatContainer;
