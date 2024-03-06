@@ -4,8 +4,8 @@ import ChatInput from "./ChatInput";
 
 const ChatContainer = () => {
   return (
-    <div className="chat-container flex overflow-auto  space-y-3 relative flex-col gap px-2 py-4 mx-auto rounded-lg w-full sm:w-2/3 h-[95%] border border-white bg-[#2d2d2d56] bg-center ">
-      <div className="space-y-3 p-2 ">
+    <div className="chat-container flex  overflow-auto  space-y-3 relative flex-col gap px-2 py-4 mx-auto rounded-lg w-full sm:w-2/3 h-[95%] border border-white bg-[#2d2d2d56] bg-center ">
+      <div className="space-y-3 p-2 flex-1 ">
         <BotReply text="Welcome to Blackrobe, your personalized contract generator." />
         <BotReply
           text="Select type of contract to generate :-"
