@@ -18,7 +18,7 @@ const ChatInput = () => {
         onChange={(e) => setUserInput(e.target.value)}
         value={userInput}
         onKeyDown={handleKeyDown}
-        className="rounded-md min-h-max w-full bg-transparent  text-white text-lg placeholder:text-white placeholder:focus:text-gray-200 placeholder:text-base outline-none px-2 resize-none"
+        className="rounded-md min-h-max w-full bg-transparent  text-white text-lg placeholder:text-white placeholder:focus:text-gray-200 placeholder:text-base outline-none px-2 resize-none "
         autoFocus={true}
         placeholder="Chat With Blackrobe"
         rows={1} // Start with one row
