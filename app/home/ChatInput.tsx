@@ -13,8 +13,7 @@ const ChatInput = () => {
     }
   };
   return (
-    <div className="w-[95%] md:w-[90%] p-2 rounded-md absolute bg-[#8c40ef62]  bottom-4  flex-1 flex items-center justify-center">
-      {/* Replace input with textarea for multiline input */}
+    <div className="w-[95%] md:w-[90%] p-2 rounded-md  bg-[#8c40ef62]    flex-1 flex items-center justify-center">
       <textarea
         onChange={(e) => setUserInput(e.target.value)}
         value={userInput}
