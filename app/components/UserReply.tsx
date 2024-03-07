@@ -8,7 +8,7 @@ const UserReply = ({ text }: { text: string }) => {
   const { data: session, status } = useSession();
 
   return (
-    <div className="user-reply self-end md:mr-8 items-center  flex pr-6  gap-4 text-lg bg-[#8638ebcb] p-2 max-w-max  md:w-[80%]  rounded-md text-white ">
+    <div className="user-reply self-end md:mr-8 items-center  flex pr-6  gap-4  bg-[#8638ebcb] p-2 max-w-max  md:w-[80%]  rounded-md text-white ">
       {session?.user?.image ? (
         <Image
           width={34}

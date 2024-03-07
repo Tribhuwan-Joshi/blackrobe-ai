@@ -113,7 +113,7 @@ const ChatContainer = () => {
   }, [messages]);
 
   return (
-    <div className="flex overflow-hidden space-y-3 relative flex-col gap px-2 py-4 mx-auto rounded-lg w-full sm:w-2/3 h-[95%] border border-white bg-[#2d2d2d56] bg-center">
+    <div className="flex overflow-hidden text-lg space-y-3 relative flex-col gap px-2 py-4 mx-auto rounded-lg w-full sm:w-2/3 h-[95%] border border-white bg-[#2d2d2d56] bg-center">
       <div
         ref={chatContainerRef}
         className="chat-container space-y-3 p-2 flex-1 flex flex-col overflow-auto"

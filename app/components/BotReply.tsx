@@ -9,7 +9,7 @@ export default function BotReply({
   options?: string[];
 }) {
   return (
-    <div className="bot-reply items-center  flex   gap-6 text-lg bg-[#bebebe58] py-2 p-1 md:w-[80%]  rounded-md text-white ">
+    <div className="bot-reply items-center  flex   gap-6  bg-[#bebebe58] py-2 p-1 md:w-[80%]  rounded-md text-white ">
       <div className="bg-[#fffefe] max-h-max self-start rounded-md px-2 max-w-max p-1">
         <Image src={blackrobeIcon} width={32} alt="Icon" />
       </div>
