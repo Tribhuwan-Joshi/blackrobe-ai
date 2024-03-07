@@ -45,6 +45,7 @@ const ChatContainer = () => {
   const chatContainerRef = useRef<HTMLDivElement>(null);
   const [contractGenerated, setContractGenerated] = useState(false);
   const [isChatStarted, setChatStarted] = useState(false);
+  const [typeCount, setTypeCount] = useState(15);
   const processInput = async (input: string) => {
     if (contractGenerated) {
       setMessages((prev) => [
@@ -55,27 +56,34 @@ const ChatContainer = () => {
           type: "Bot",
         },
       ]);
-    } else if (!isChatStarted) {
-      if (!isNaN(parseInt(input)) && isFinite(parseFloat(input))) {
+      return;
+    }
+    if (!isChatStarted) {
+      if (
+        !isNaN(parseInt(input)) &&
+        isFinite(parseFloat(input)) &&
+        parseInt(input) >= 1 &&
+        parseInt(input) <= typeCount
+      ) {
         const inputNumber = parseInt(input);
-        if (inputNumber >= 1 && inputNumber <= 15) {
-          setChatStarted(true);
-          setContractId(parseInt(input));
-          setSubqLen(questions[parseInt(input) - 1].questions.length);
-          setMessages((prev) => [
-            ...prev,
-            { text: ` ${input}`, type: "User" },
-            { text: questions[parseInt(input) - 1].questions[0], type: "Bot" },
-          ]);
-          setSubqInd(1);
-          return; // Exit early if input is valid
-        }
-      } else
+
+        setChatStarted(true);
+        setContractId(parseInt(input) - 1);
+        setSubqLen(questions[parseInt(input) - 1].questions.length);
+        setMessages((prev) => [
+          ...prev,
+          { text: ` ${input}`, type: "User" },
+          { text: questions[parseInt(input) - 1].questions[0], type: "Bot" },
+        ]);
+        setSubqInd(1);
+        return; // Exit early if input is valid
+      } else {
         setMessages((prev) => [
           ...prev,
           { text: ` ${input}`, type: "User" },
           { text: "Please provide a valid option", type: "Bot" },
         ]);
+      }
     } else {
       setMessages((prev) => [...prev, { text: ` ${input}`, type: "User" }]);
       setSubqInd((prev) => prev + 1);
