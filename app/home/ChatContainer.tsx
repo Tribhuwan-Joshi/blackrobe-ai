@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import BotReply from "../components/BotReply";
 import UserReply from "../components/UserReply";
 import ChatInput from "./ChatInput";
+import questions from "../helpers/questions";
 
 type messageType = {
   text: string;
@@ -42,26 +43,32 @@ const ChatContainer = () => {
   const chatContainerRef = useRef<HTMLDivElement>(null);
 
   const [isChatStarted, setChatStarted] = useState(false);
-  const [optionslen, setOptionsLen] = useState(15);
   const processInput = async (input: string) => {
     if (!isChatStarted) {
       if (!isNaN(parseInt(input)) && isFinite(parseFloat(input))) {
         const inputNumber = parseInt(input);
-        if (inputNumber >= 1 && inputNumber <= optionslen) {
+        if (inputNumber >= 1 && inputNumber <= 15) {
+          setChatStarted(true);
           setMessages((prev) => [
             ...prev,
             { text: ` ${input}`, type: "User" },
-            { text: `You entered ${input}`, type: "Bot" },
+            { text: questions[parseInt(input) - 1].questions[0], type: "Bot" },
           ]);
+
           return; // Exit early if input is valid
         }
-      }
-      setMessages((prev) => [
-        ...prev,
-        { text: ` ${input}`, type: "User" },
-        { text: "Please provide a valid option", type: "Bot" },
-      ]);
+      } else
+        setMessages((prev) => [
+          ...prev,
+          { text: ` ${input}`, type: "User" },
+          { text: "Please provide a valid option", type: "Bot" },
+        ]);
     }
+    setMessages((prev) => [
+      ...prev,
+      { text: ` ${input}`, type: "User" },
+      { text: "Asking more questions...", type: "Bot" },
+    ]);
   };
 
   useEffect(() => {

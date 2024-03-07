@@ -9,13 +9,13 @@ const ChatInput = ({
 }) => {
   const [userInput, setUserInput] = useState("");
   const handleKeyDown = (e: KeyboardEvent<HTMLTextAreaElement>) => {
-    console.log("keydown");
-    if (e.key == "Enter" && userInput.trim()) {
-      e.preventDefault();
-      setUserInput("");
-      processInput(userInput.trim());
+    if (e.key === "Enter" && !e.shiftKey && userInput.trim()) {
+      e.preventDefault(); // Prevent the default behavior of Enter key press
+      setUserInput(""); // Clear the input
+      processInput(userInput.trim()); // Process the input
     }
   };
+
   const handleInput = (e: any) => {
     e.preventDefault();
     if (userInput.trim()) {
