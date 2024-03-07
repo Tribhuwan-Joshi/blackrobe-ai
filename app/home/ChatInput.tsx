@@ -2,21 +2,25 @@
 import { KeyboardEvent, useState } from "react";
 import { BsSend } from "react-icons/bs";
 
-const ChatInput = ({ processInput }: { processInput: () => void }) => {
+const ChatInput = ({
+  processInput,
+}: {
+  processInput: (input: string) => void;
+}) => {
   const [userInput, setUserInput] = useState("");
   const handleKeyDown = (e: KeyboardEvent<HTMLTextAreaElement>) => {
     console.log("keydown");
     if (e.key == "Enter" && userInput.trim()) {
       e.preventDefault();
-      console.log("user's choice", userInput.trim());
       setUserInput("");
+      processInput(userInput.trim());
     }
   };
   const handleInput = (e: any) => {
     e.preventDefault();
     if (userInput.trim()) {
-      processInput();
       setUserInput("");
+      processInput(userInput.trim());
     }
   };
   return (
