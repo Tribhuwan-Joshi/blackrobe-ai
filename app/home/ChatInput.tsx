@@ -2,13 +2,20 @@
 import { KeyboardEvent, useState } from "react";
 import { BsSend } from "react-icons/bs";
 
-const ChatInput = () => {
+const ChatInput = ({ processInput }: { processInput: () => void }) => {
   const [userInput, setUserInput] = useState("");
   const handleKeyDown = (e: KeyboardEvent<HTMLTextAreaElement>) => {
     console.log("keydown");
     if (e.key == "Enter" && userInput.trim()) {
       e.preventDefault();
       console.log("user's choice", userInput.trim());
+      setUserInput("");
+    }
+  };
+  const handleInput = (e: any) => {
+    e.preventDefault();
+    if (userInput.trim()) {
+      processInput();
       setUserInput("");
     }
   };
@@ -24,7 +31,9 @@ const ChatInput = () => {
         rows={1} // Start with one row
         style={{ minHeight: "2rem" }} // Set a minimum height
       />
-      <BsSend color="white" className="mr-5 cursor-pointer" size={20} />
+      <button onClick={handleInput}>
+        <BsSend color="white" className="mr-5 cursor-pointer" size={20} />
+      </button>
     </div>
   );
 };

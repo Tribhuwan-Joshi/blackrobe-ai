@@ -3,11 +3,9 @@ import blackrobeIcon from "@/public/blackrobe-bot.png";
 
 export default function BotReply({
   text,
-  key,
   options,
 }: {
   text: string;
-  key?: number;
   options?: string[];
 }) {
   return (

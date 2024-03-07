@@ -25,7 +25,7 @@ export default function OAuthBtn({
 
   const handleClick = async () => {
     try {
-      await signIn(provider);
+      setTimeout(async () => await signIn(provider), 0);
       router.push("/");
     } catch (err) {
       console.error("Error occurred:", err);

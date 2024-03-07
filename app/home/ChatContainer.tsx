@@ -40,6 +40,8 @@ const ChatContainer = () => {
     { type: "User", text: "Mortgage Contract" },
   ]);
 
+  const [isChatStarted, setChatStarted] = useState(false);
+  const processInput = () => {};
   return (
     <div className=" flex  overflow-auto  space-y-3 relative flex-col gap px-2 py-4 mx-auto rounded-lg w-full sm:w-2/3 h-[95%] border border-white bg-[#2d2d2d56] bg-center ">
       <div className="chat-container space-y-3 p-2 flex-1 flex flex-col">
@@ -52,7 +54,7 @@ const ChatContainer = () => {
         )}
       </div>
 
-      <ChatInput />
+      <ChatInput processInput={processInput} />
     </div>
   );
 };

@@ -1,9 +1,7 @@
 import { Metadata } from "next";
-
-import { AuthMask } from "./AuthMask";
 import { getServerSession } from "next-auth";
+import { AuthMask } from "./AuthMask";
 import authOptions from "./auth/authOptions";
-import HomePage from "./home/page";
 import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
