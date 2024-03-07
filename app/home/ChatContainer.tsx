@@ -39,22 +39,35 @@ const ChatContainer = () => {
       ],
     },
   ]);
-
+  const [contractId, setContractId] = useState(-1);
+  const [subQuestionLen, setSubqLen] = useState(0);
+  const [subQuestionInd, setSubqInd] = useState(0);
   const chatContainerRef = useRef<HTMLDivElement>(null);
-
+  const [contractGenerated, setContractGenerated] = useState(false);
   const [isChatStarted, setChatStarted] = useState(false);
   const processInput = async (input: string) => {
-    if (!isChatStarted) {
+    if (contractGenerated) {
+      setMessages((prev) => [
+        ...prev,
+        { text: input, type: "User" },
+        {
+          text: "Upgrade to premium to generate more contracts at once",
+          type: "Bot",
+        },
+      ]);
+    } else if (!isChatStarted) {
       if (!isNaN(parseInt(input)) && isFinite(parseFloat(input))) {
         const inputNumber = parseInt(input);
         if (inputNumber >= 1 && inputNumber <= 15) {
           setChatStarted(true);
+          setContractId(parseInt(input));
+          setSubqLen(questions[parseInt(input) - 1].questions.length);
           setMessages((prev) => [
             ...prev,
             { text: ` ${input}`, type: "User" },
             { text: questions[parseInt(input) - 1].questions[0], type: "Bot" },
           ]);
-
+          setSubqInd(1);
           return; // Exit early if input is valid
         }
       } else
@@ -63,12 +76,25 @@ const ChatContainer = () => {
           { text: ` ${input}`, type: "User" },
           { text: "Please provide a valid option", type: "Bot" },
         ]);
+    } else {
+      setMessages((prev) => [...prev, { text: ` ${input}`, type: "User" }]);
+      setSubqInd((prev) => prev + 1);
+      if (subQuestionInd == subQuestionLen) {
+        setMessages((prev) => [
+          ...prev,
+          { text: "Contract Generated Successfully", type: "Bot" },
+        ]);
+        setContractGenerated(true);
+      } else {
+        setMessages((prev) => [
+          ...prev,
+          {
+            text: questions[contractId].questions[subQuestionInd],
+            type: "Bot",
+          },
+        ]);
+      }
     }
-    setMessages((prev) => [
-      ...prev,
-      { text: ` ${input}`, type: "User" },
-      { text: "Asking more questions...", type: "Bot" },
-    ]);
   };
 
   useEffect(() => {
