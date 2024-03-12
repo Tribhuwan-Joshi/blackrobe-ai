@@ -68,12 +68,15 @@ const ChatContainer = () => {
         const inputNumber = parseInt(input);
 
         setChatStarted(true);
-        setContractId(parseInt(input) - 1);
-        setSubqLen(questions[parseInt(input) - 1].questions.length);
+        setContractId(inputNumber - 1);
+        setSubqLen(questions[inputNumber - 1].questions.length);
         setMessages((prev) => [
           ...prev,
-          { text: ` ${input}`, type: "User" },
-          { text: questions[parseInt(input) - 1].questions[0], type: "Bot" },
+          {
+            text: ` ${input}- ${questions[inputNumber - 1].category}`,
+            type: "User",
+          },
+          { text: questions[inputNumber - 1].questions[0], type: "Bot" },
         ]);
         setSubqInd(1);
         return; // Exit early if input is valid
