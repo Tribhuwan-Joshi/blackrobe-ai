@@ -4,9 +4,11 @@ import blackrobeIcon from "@/public/blackrobe-bot.png";
 export default function BotReply({
   text,
   options,
+  processInput,
 }: {
   text: string;
   options?: string[];
+  processInput?: (i: string) => void;
 }) {
   return (
     <div className="bot-reply items-center  flex   gap-6  bg-[#bebebe58] py-2 p-1 md:w-[80%]  rounded-md text-white ">
@@ -17,10 +19,15 @@ export default function BotReply({
         <p>{text}</p>
 
         {options?.length && (
-          <ul className="space-y-1">
-            {options.map((o, i) => (
-              <li key={i}>
-                {i + 1}. {o}
+          <ul className="space-y-2 flex flex-col  items-start">
+            {options.map((o, index) => (
+              <li key={index} className="flex-1">
+                <button
+                  className="border-[1px] md:border-[2px] bg-[#2d2d2d7c] hover:scale-110 transition-all ease-in-out  border-gray-500 inset-2 p-1 rounded-md "
+                  onClick={() => processInput!(String(index + 1))}
+                >
+                  {index + 1}. {o}
+                </button>
               </li>
             ))}
           </ul>

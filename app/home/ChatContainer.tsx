@@ -18,7 +18,7 @@ const ChatContainer = () => {
       text: "Welcome to Blackrobe! Your personalized contract generator.",
     },
     {
-      text: "Select a contract ID to generate the contract",
+      text: "Click/Provide the contract ID to generate the contract",
       type: "Bot",
       options: [
         "Non-Disclosure Agreement (NDA)",
@@ -120,7 +120,12 @@ const ChatContainer = () => {
       >
         {messages.map((m, i) =>
           m.type === "Bot" ? (
-            <BotReply key={i} options={m.options} text={m.text} />
+            <BotReply
+              key={i}
+              options={m.options}
+              processInput={processInput}
+              text={m.text}
+            />
           ) : (
             <UserReply key={i} text={m.text} />
           )
