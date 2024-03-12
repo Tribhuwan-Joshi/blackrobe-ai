@@ -106,11 +106,15 @@ const ChatContainer = () => {
   };
 
   useEffect(() => {
+    if (!isChatStarted && chatContainerRef.current) {
+      chatContainerRef.current.scrollTop = 0;
+      return;
+    }
     if (chatContainerRef.current) {
       chatContainerRef.current.scrollTop =
         chatContainerRef.current.scrollHeight;
     }
-  }, [messages]);
+  }, [messages, isChatStarted]);
 
   return (
     <div className="flex overflow-hidden text-lg space-y-3 relative flex-col gap px-2 py-4 mx-auto rounded-lg w-full sm:w-2/3 h-[95%] border border-white bg-[#2d2d2d56] bg-center">
