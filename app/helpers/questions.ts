@@ -2,6 +2,7 @@ const questions = [
   {
     category: "Non-Disclosure Agreement (NDA)",
     questions: [
+      "Country Applicable?",
       "What are the names of the parties involved?",
       "What confidential information needs to be protected?",
       "What is the duration of the agreement?",
@@ -12,6 +13,7 @@ const questions = [
   {
     category: "Service Agreement",
     questions: [
+      "Country Applicable?",
       "Who are the parties involved in providing and receiving services?",
       "What services will be provided, and what are the deliverables?",
       "What is the duration of the agreement and the payment terms?",
@@ -22,6 +24,7 @@ const questions = [
   {
     category: "Employment Contract",
     questions: [
+      "Country Applicable?",
       "Who are the employer and employee?",
       "What is the job title and description, including responsibilities and duties?",
       "What is the compensation, benefits, and working hours?",
@@ -32,6 +35,7 @@ const questions = [
   {
     category: "Freelance Contract",
     questions: [
+      "Country Applicable?",
       "Who are the client and freelancer?",
       "What services will the freelancer provide, and what is the scope of work?",
       "What is the payment structure and schedule?",
@@ -42,6 +46,7 @@ const questions = [
   {
     category: "Sales Contract",
     questions: [
+      "Country Applicable?",
       "Who are the buyer and seller?",
       "What is being sold, and what are the specifications or conditions?",
       "What is the price, payment terms, and delivery details?",
@@ -52,6 +57,7 @@ const questions = [
   {
     category: "Investor Agreement",
     questions: [
+      "Country Applicable?",
       "Who are the investors and the company receiving investment?",
       "What is the investment amount and the percentage of ownership or equity granted?",
       "What are the rights and obligations of the investors, including voting rights and board representation?",
@@ -62,6 +68,7 @@ const questions = [
   {
     category: "Insurance Agreement",
     questions: [
+      "Country Applicable?",
       "Who are the insured parties and the insurance provider?",
       "What are the coverage details, including the types of risks or events covered?",
       "What are the premium amounts and payment terms?",
@@ -72,6 +79,7 @@ const questions = [
   {
     category: "Lease Agreement",
     questions: [
+      "Country Applicable?",
       "Who are the lessor (landlord) and lessee (tenant)?",
       "What is the property or asset being leased, and what are the terms of use?",
       "What is the duration of the lease and the rental amount?",
@@ -82,6 +90,7 @@ const questions = [
   {
     category: "Joint Venture Agreement",
     questions: [
+      "Country Applicable?",
       "Who are the parties forming the joint venture?",
       "What is the purpose and scope of the joint venture?",
       "What are the contributions and responsibilities of each party?",
@@ -92,6 +101,7 @@ const questions = [
   {
     category: "Licensing Agreement",
     questions: [
+      "Country Applicable?",
       "Who are the licensor and licensee?",
       "What intellectual property or rights are being licensed?",
       "What are the terms of use, restrictions, and exclusivity?",
@@ -102,6 +112,7 @@ const questions = [
   {
     category: "Mortgage Contract",
     questions: [
+      "Country Applicable?",
       "Who are the borrower and the lender (mortgagee)?",
       "What is the loan amount, interest rate, and repayment terms?",
       "What is the property being mortgaged, and what are the conditions for its use?",
@@ -112,6 +123,7 @@ const questions = [
   {
     category: "Supply Agreement",
     questions: [
+      "Country Applicable?",
       "Who are the supplier and the buyer?",
       "What products or services are being supplied, and what are the specifications?",
       "What is the pricing, payment terms, and delivery schedule?",
@@ -122,6 +134,7 @@ const questions = [
   {
     category: "Maintenance Contract",
     questions: [
+      "Country Applicable?",
       "Who are the service provider and the client?",
       "What equipment, systems, or properties require maintenance?",
       "What are the scope of maintenance services and response times?",
@@ -132,6 +145,7 @@ const questions = [
   {
     category: "Outsourcing Agreement",
     questions: [
+      "Country Applicable?",
       "Who are the outsourcing company and the client?",
       "What services or functions are being outsourced, and what are the performance metrics?",
       "What are the service levels, responsibilities, and obligations of both parties?",
@@ -142,6 +156,7 @@ const questions = [
   {
     category: "Agency Agreement",
     questions: [
+      "Country Applicable?",
       "Who are the principal and the agent?",
       "What products, services, or tasks will the agent represent or perform on behalf of the principal?",
       "What are the agent's powers, duties, and limitations?",
