@@ -2,8 +2,11 @@ import authOptions from "@/app/auth/authOptions";
 import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
 import OpenAI from "openai";
-
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+import Configuration from "openai";
+const configuration = new Configuration({
+  apiKey: process.env.OPENAI_KEY,
+});
+const openai = new OpenAI();
 async function getResponse(info: string) {
   const response = await openai.chat.completions.create({
     messages: [
