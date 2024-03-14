@@ -13,7 +13,7 @@ async function getResponse(info: string) {
       {
         role: "assistant",
         content:
-          "You will only and only create template for legal contract without responding with extra tag. Your response should only contain the legal contract with respect to the conditions asked by user. And Please provide enlosed by div tag",
+          "You will only and only create template for legal contract without responding with extra response. Your response should only contain the legal contract with respect to the info(having questions and answers) asked by user. And Please provide enlosed by div tag. with proper formatting of contract document",
       },
       {
         role: "user",
