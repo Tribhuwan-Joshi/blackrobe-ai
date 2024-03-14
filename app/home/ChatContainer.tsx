@@ -4,11 +4,13 @@ import BotReply from "../components/BotReply";
 import UserReply from "../components/UserReply";
 import ChatInput from "./ChatInput";
 import questions from "../helpers/questions";
+import axios from "axios";
 
 type messageType = {
   text: string;
   type: "Bot" | "User";
   options?: string[];
+  done?: boolean;
 };
 
 const ChatContainer = () => {
@@ -47,7 +49,7 @@ const ChatContainer = () => {
   const [isChatStarted, setChatStarted] = useState(false);
   const [typeCount, setTypeCount] = useState(15);
 
-  const [info, setInfo] = useState("Type of contract to generate: ");
+  const [info, setInfo] = useState<string>("Type of contract to generate: ");
 
   const processInput = async (input: string) => {
     if (contractGenerated) {
@@ -81,12 +83,11 @@ const ChatContainer = () => {
           },
           { text: questions[inputNumber - 1].questions[0], type: "Bot" },
         ]);
-        setInfo((prev) =>
-          prev.concat(
+        setInfo(
+          "Type of contract to generate: " +
             questions[inputNumber - 1].category +
-              ". " +
-              questions[inputNumber - 1].questions[0]
-          )
+            ". " +
+            questions[inputNumber - 1].questions[0]
         );
         setSubqInd(1);
         return; // Exit early if input is valid
@@ -100,10 +101,14 @@ const ChatContainer = () => {
     } else {
       setMessages((prev) => [...prev, { text: ` ${input}`, type: "User" }]);
       setSubqInd((prev) => prev + 1);
-      setInfo((prev) => prev.concat(" " + input));
-      if (subQuestionInd == subQuestionLen) {
-        setMessages((prev) => [...prev, { text: info, type: "Bot" }]);
+      if (subQuestionInd === subQuestionLen) {
+        // Include the last user input before outputting the final info string
+        setInfo((prev) => prev + " " + input);
         setContractGenerated(true);
+        setMessages((prev) => [
+          ...prev,
+          { text: info, type: "Bot", done: true },
+        ]);
       } else {
         setMessages((prev) => [
           ...prev,
@@ -112,8 +117,9 @@ const ChatContainer = () => {
             type: "Bot",
           },
         ]);
-        setInfo((prev) =>
-          prev.concat(". " + questions[contractId].questions[subQuestionInd])
+        setInfo(
+          (prev) =>
+            prev + ". " + questions[contractId].questions[subQuestionInd]
         );
       }
     }
@@ -143,6 +149,7 @@ const ChatContainer = () => {
               options={m.options}
               processInput={processInput}
               text={m.text}
+              done={m.done}
             />
           ) : (
             <UserReply key={i} text={m.text} />
