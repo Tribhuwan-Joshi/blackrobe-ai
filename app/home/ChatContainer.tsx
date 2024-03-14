@@ -46,6 +46,9 @@ const ChatContainer = () => {
   const [contractGenerated, setContractGenerated] = useState(false);
   const [isChatStarted, setChatStarted] = useState(false);
   const [typeCount, setTypeCount] = useState(15);
+
+  const [info, setInfo] = useState("Type of contract to generate: ");
+
   const processInput = async (input: string) => {
     if (contractGenerated) {
       setMessages((prev) => [
@@ -78,6 +81,13 @@ const ChatContainer = () => {
           },
           { text: questions[inputNumber - 1].questions[0], type: "Bot" },
         ]);
+        setInfo((prev) =>
+          prev.concat(
+            questions[inputNumber - 1].category +
+              ". " +
+              questions[inputNumber - 1].questions[0]
+          )
+        );
         setSubqInd(1);
         return; // Exit early if input is valid
       } else {
@@ -90,11 +100,9 @@ const ChatContainer = () => {
     } else {
       setMessages((prev) => [...prev, { text: ` ${input}`, type: "User" }]);
       setSubqInd((prev) => prev + 1);
+      setInfo((prev) => prev.concat(" " + input));
       if (subQuestionInd == subQuestionLen) {
-        setMessages((prev) => [
-          ...prev,
-          { text: "Contract Generated Successfully", type: "Bot" },
-        ]);
+        setMessages((prev) => [...prev, { text: info, type: "Bot" }]);
         setContractGenerated(true);
       } else {
         setMessages((prev) => [
@@ -104,6 +112,9 @@ const ChatContainer = () => {
             type: "Bot",
           },
         ]);
+        setInfo((prev) =>
+          prev.concat(". " + questions[contractId].questions[subQuestionInd])
+        );
       }
     }
   };
