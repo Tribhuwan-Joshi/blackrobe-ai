@@ -10,7 +10,7 @@ async function getResponse(info: string) {
       {
         role: "assistant",
         content:
-          "You will only and only create template for legal contract without responding with extra tag. Your response should only contain the legal contract with respect to the conditions asked by user. And Please provide it as react component enlosed by div tag",
+          "You will only and only create template for legal contract without responding with extra tag. Your response should only contain the legal contract with respect to the conditions asked by user. And Please provide enlosed by div tag",
       },
       {
         role: "user",
