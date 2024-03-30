@@ -10,8 +10,63 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Contract {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  title     String?  @db.String
+  content   String   @db.String
+  createdAt DateTime @default(now())
+  userEmail String   @db.String
+
+  @@map("contracts")
+}
+
+model Account {
+  id                String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId            String  @db.ObjectId
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.String
+  access_token      String? @db.String
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.String
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id])
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  sessionToken String   @unique
+  userId       String   @db.ObjectId
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id])
+
+  @@map("sessions")
+}
+
 model User {
-  id             String  @id @default(auto()) @map("_id") @db.ObjectId
-  email          String  @unique
+  id             String    @id @default(auto()) @map("_id") @db.ObjectId
+  email          String    @unique
   hashedPassword String?
+  name           String?
+  emailVerified  DateTime?
+  image          String?
+  accounts       Account[]
+  sessions       Session[]
+
+  @@map("users")
+}
+
+model VerificationToken {
+  identifier String   @id @map("_id")
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verificationTokens")
 }

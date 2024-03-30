@@ -84,10 +84,9 @@ const ChatContainer = () => {
           { text: questions[inputNumber - 1].questions[0], type: "Bot" },
         ]);
         setInfo(
-          "Type of contract to generate: " +
-            questions[inputNumber - 1].category +
-            ". " +
-            questions[inputNumber - 1].questions[0]
+          `Type of contract to generate: ${
+            questions[inputNumber - 1].category
+          }. ${questions[inputNumber - 1].questions[0]}`
         );
         setSubqInd(1);
         return; // Exit early if input is valid
@@ -100,10 +99,9 @@ const ChatContainer = () => {
       }
     } else {
       setMessages((prev) => [...prev, { text: ` ${input}`, type: "User" }]);
+      setInfo((prev) => `${prev}. ${input}`); // Add user input to info state
       setSubqInd((prev) => prev + 1);
       if (subQuestionInd === subQuestionLen) {
-        // Include the last user input before outputting the final info string
-        setInfo((prev) => prev + " " + input);
         setContractGenerated(true);
         setMessages((prev) => [
           ...prev,
@@ -119,7 +117,7 @@ const ChatContainer = () => {
         ]);
         setInfo(
           (prev) =>
-            prev + ". " + questions[contractId].questions[subQuestionInd]
+            `${prev}. ${questions[contractId].questions[subQuestionInd]}`
         );
       }
     }

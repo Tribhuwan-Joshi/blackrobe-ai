@@ -7,7 +7,8 @@ const configuration = new Configuration({
   apiKey: process.env.OPENAI_KEY,
 });
 const openai = new OpenAI();
-async function getResponse(info: string) {
+async function getResponse(info: { text: string }) {
+  console.log(info);
   const response = await openai.chat.completions.create({
     messages: [
       {
@@ -17,10 +18,10 @@ async function getResponse(info: string) {
       },
       {
         role: "user",
-        content: `create and fill the required blank by understanding these question and user responses- ${info}`,
+        content: `Create an extremely pricised and personalized and  legal contract by analyzing the following questionaries in correct format -  ${info.text}`,
       },
     ],
-    model: "gpt-3.5-turbo",
+    model: "gpt-4-0125-preview",
   });
 
   return response.choices[0].message.content;

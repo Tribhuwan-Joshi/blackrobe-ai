@@ -2,7 +2,11 @@ import Image from "next/image";
 import LogoutBtn from "../components/Logout";
 import Blackrobe from "@/public/Blackrobe-typo.png";
 import Link from "next/link";
-const Sidebar = ({ email }: { email: string }) => {
+import { getServerSession } from "next-auth";
+import axios from "axios";
+const Sidebar = async ({ email }: { email: string }) => {
+  const session = await getServerSession()!;
+
   return (
     <div className=" hidden py-6 sm:flex justify-between items-center flex-col bg-black text-white min-w-[200px] w-1/5 h-full mr-auto">
       <Image width={198} className="mx-auto" src={Blackrobe} alt="logo" />
