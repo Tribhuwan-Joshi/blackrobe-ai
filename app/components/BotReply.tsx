@@ -3,6 +3,7 @@ import Image from "next/image";
 import blackrobeIcon from "@/public/blackrobe-bot.png";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 export default function BotReply({
   text: initialText,
@@ -18,16 +19,23 @@ export default function BotReply({
   const [text, setText] = useState(initialText);
   const [isClicked, setIsClicked] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
-
+  const router = useRouter();
   useEffect(() => {
     async function getResponse() {
       try {
-        const res = await axios.post("/api/contract", { text });
+        const res: {
+          status: number;
+          data: { aiResponse: string; contract: { id: number } };
+        } = await axios.post("/api/contract", {
+          text,
+        });
         if (res.status === 201) {
-          setText(res.data);
-          console.log(res.data);
+          setText(res.data.aiResponse);
+          console.log("inside botreply ", res.data.contract);
+          router.push(`/contracts/${res.data.contract.id}`);
         }
       } catch (error) {
+        console.log(error);
         setText("Server Error Occurred. Try again later");
       }
     }

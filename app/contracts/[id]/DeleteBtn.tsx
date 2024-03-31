@@ -15,7 +15,7 @@ const DeleteBtn = ({ contractId }: { contractId: string }) => {
       setIsDeleting(true);
       const res = await axios.delete("/api/contract/" + contractId);
       if (res.status == 200) {
-        router.push("/contracts");
+        router.push("/home");
       } else if (res.status == 500) {
         setError("UnExpected Error Occur");
         setIsDeleting(false);
@@ -28,7 +28,7 @@ const DeleteBtn = ({ contractId }: { contractId: string }) => {
   return (
     <>
       <button
-        className="bg-red-500"
+        className="bg-red-500 text-white p-2 rounded-md"
         disabled={isDeleting}
         onClick={() => deleteContract(contractId)}
       >

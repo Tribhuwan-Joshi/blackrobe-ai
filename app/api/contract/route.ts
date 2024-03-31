@@ -2,10 +2,10 @@ import authOptions from "@/app/auth/authOptions";
 import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
 import OpenAI from "openai";
-import Configuration from "openai";
-const configuration = new Configuration({
-  apiKey: process.env.OPENAI_KEY,
-});
+
+import prisma from "@/prisma";
+import { Contract } from "@prisma/client";
+
 const openai = new OpenAI();
 async function getResponse(info: { text: string }) {
   console.log(info);
@@ -32,6 +32,9 @@ export async function POST(request: NextRequest) {
   if (!session) return NextResponse.json({}, { status: 401 });
 
   const aiResponse = await getResponse(body);
-
-  return NextResponse.json(aiResponse, { status: 201 });
+  const contract: Contract = await prisma.contract.create({
+    data: { content: aiResponse!, userEmail: session.user?.email! },
+  });
+  console.log("Contract id is", contract);
+  return NextResponse.json({ aiResponse, contract }, { status: 201 });
 }

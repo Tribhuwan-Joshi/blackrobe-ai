@@ -13,12 +13,14 @@ const page = async ({ params }: { params: { id: string } }) => {
   if (!contract) notFound();
   return (
     <div className="m-5 md:m-10">
-      <DeleteBtn contractId={params.id} />
-      <div className=" border border-gray-800 p-2 my-4 rounded-md">
-        <h1 className="text-center text-3xl font-semibold">
-          {contract?.title}
-        </h1>
-        <div dangerouslySetInnerHTML={{ __html: contract!.content }} />;
+      <div className="w-[80%] mx-auto">
+        <DeleteBtn contractId={params.id} />
+        <div className=" border  border-gray-800 p-2 my-4 rounded-md">
+          <h1 className="text-center text-3xl font-semibold">
+            {contract?.title ?? "Contract"}
+          </h1>
+          <div dangerouslySetInnerHTML={{ __html: contract!.content }} />;
+        </div>
       </div>
     </div>
   );
@@ -29,7 +31,7 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
     where: { id: params.id },
   });
   return {
-    title: contract?.title,
+    title: contract?.title || `contract - ${contract?.id}`,
     description: "Details of issue" + contract?.id,
   };
 }
