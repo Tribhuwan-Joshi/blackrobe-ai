@@ -34,7 +34,7 @@ const Sidebar = async ({ email }: { email: string }) => {
         <p> {email}</p>
         <LogoutBtn />
         <div className="flex gap-3 items-center my-3">
-          <MdEmail />
+          <MdEmail size={20} />
           <Link className="hover:underline" href="mailto:Info@deepware.org">
             Contact Us
           </Link>
