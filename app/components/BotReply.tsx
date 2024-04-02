@@ -16,37 +16,34 @@ export default function BotReply({
   processInput?: (i: string) => void;
   done?: boolean;
 }) {
-  console.log("inside botreply with done", done);
   const [text, setText] = useState(initialText);
   const [isClicked, setIsClicked] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
   const router = useRouter();
-  useEffect(() => {
-    async function getResponse() {
-      console.log("Called apis");
-      try {
-        const res: {
-          status: number;
-          data: { aiResponse: string; contract: { id: number } };
-        } = await axios.post("/api/contract", {
-          text,
-        });
-        if (res.status === 201) {
-          setText(res.data.aiResponse);
-          console.log("inside botreply ", res.data.contract);
-          router.push(`/contracts/${res.data.contract.id}`);
-        }
-      } catch (error) {
-        console.log(error);
-        setText("Server Error Occurred. Try again later");
-      }
-    }
 
-    if (done && !isGenerating) {
-      setIsGenerating(true);
-      getResponse().finally(() => setIsGenerating(false));
+  async function getResponse() {
+    try {
+      const res: {
+        status: number;
+        data: { aiResponse: string; contract: { id: number } };
+      } = await axios.post("/api/contract", {
+        text,
+      });
+      if (res.status === 201) {
+        setText(res.data.aiResponse);
+        console.log("inside botreply ", res.data.contract);
+        router.push(`/contracts/${res.data.contract.id}`);
+      }
+    } catch (error) {
+      console.log(error);
+      setText("Server Error Occurred. Try again later");
     }
-  }, []); // Add isGenerating as a dependency
+  }
+
+  if (done && !isGenerating) {
+    setIsGenerating(true);
+    getResponse().finally(() => setIsGenerating(false));
+  }
 
   return (
     <div className="bot-reply items-center  flex   gap-6  bg-[#bebebe58] py-2 p-1 md:w-[80%]  rounded-md text-white ">

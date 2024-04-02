@@ -61,8 +61,7 @@ const ChatContainer = () => {
         },
       ]);
       return;
-    }
-    if (!isChatStarted) {
+    } else if (!isChatStarted) {
       if (
         !isNaN(parseInt(input)) &&
         isFinite(parseFloat(input)) &&
