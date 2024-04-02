@@ -26,6 +26,7 @@ async function getResponse(info: { text: string }) {
 
   return response.choices[0].message.content;
 }
+
 export async function POST(request: NextRequest) {
   const body = await request.json();
   const session = await getServerSession(authOptions);

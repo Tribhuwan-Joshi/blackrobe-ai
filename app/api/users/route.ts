@@ -16,7 +16,6 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
       return NextResponse.json({ message: "Email is available" });
     }
   } catch (error) {
-    console.error("Error occurred:", error);
     return NextResponse.json(
       { error: "Server error occurred" },
       { status: 500 }

@@ -16,6 +16,7 @@ const DeleteBtn = ({ contractId }: { contractId: string }) => {
       const res = await axios.delete("/api/contract/" + contractId);
       if (res.status == 200) {
         router.push("/home");
+        router.refresh();
       } else if (res.status == 500) {
         setError("UnExpected Error Occur");
         setIsDeleting(false);

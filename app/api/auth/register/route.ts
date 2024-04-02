@@ -11,6 +11,7 @@ export const POST = async (req: NextRequest) => {
     const user = await prisma.user.create({
       data: { email, hashedPassword },
     });
+    return NextResponse.json(user, { status: 201 });
   } catch (error) {
     return NextResponse.json({ message: "Server Error" }, { status: 500 });
   } finally {

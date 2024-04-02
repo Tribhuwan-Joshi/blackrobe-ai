@@ -4,7 +4,7 @@ import Blackrobe from "@/public/Blackrobe-typo.png";
 import Link from "next/link";
 import prisma from "@/prisma";
 import { getServerSession } from "next-auth";
-import axios from "axios";
+
 const Sidebar = async ({ email }: { email: string }) => {
   const session = await getServerSession()!;
   const contracts = await prisma.contract.findMany({
@@ -18,7 +18,11 @@ const Sidebar = async ({ email }: { email: string }) => {
         <div className="flex max-h-[70%] items-center w-full overflow-auto flex-col gap-4">
           {contracts.map((c, i) => {
             return (
-              <Link key={c.id} href={`/contract/${c.id}`}>
+              <Link
+                key={c.id}
+                className="hover:underline"
+                href={`/contracts/${c.id}`}
+              >
                 {i + 1} Contract
               </Link>
             );
@@ -33,3 +37,4 @@ const Sidebar = async ({ email }: { email: string }) => {
   );
 };
 export default Sidebar;
+export const dynamic = "force-dynamic";

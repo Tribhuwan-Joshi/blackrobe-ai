@@ -4,7 +4,6 @@ import BotReply from "../components/BotReply";
 import UserReply from "../components/UserReply";
 import ChatInput from "./ChatInput";
 import questions from "../helpers/questions";
-import axios from "axios";
 
 type messageType = {
   text: string;

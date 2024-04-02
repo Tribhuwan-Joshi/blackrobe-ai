@@ -16,12 +16,14 @@ export default function BotReply({
   processInput?: (i: string) => void;
   done?: boolean;
 }) {
+  console.log("inside botreply with done", done);
   const [text, setText] = useState(initialText);
   const [isClicked, setIsClicked] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
   const router = useRouter();
   useEffect(() => {
     async function getResponse() {
+      console.log("Called apis");
       try {
         const res: {
           status: number;
