@@ -1,4 +1,5 @@
 "use client";
+import { IoMdHome } from "react-icons/io";
 import { useRouter } from "next/navigation";
 
 const HomeBtn = () => {
@@ -10,9 +11,9 @@ const HomeBtn = () => {
   return (
     <button
       onClick={handleClick}
-      className="bg-blue-500 text-white p-2 rounded-md"
+      className="bg-blue-500 flex gap-3 items-center text-white p-2 rounded-md"
     >
-      Home
+      <IoMdHome /> Home
     </button>
   );
 };

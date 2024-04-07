@@ -1,7 +1,7 @@
 "use client";
 
 import Spinner from "@/app/components/Spinner";
-
+import { MdDelete } from "react-icons/md";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -29,11 +29,11 @@ const DeleteBtn = ({ contractId }: { contractId: string }) => {
   return (
     <>
       <button
-        className="bg-red-500 text-white p-2 rounded-md"
+        className="bg-red-500 flex gap-3 items-center text-white p-2 rounded-md"
         disabled={isDeleting}
         onClick={() => deleteContract(contractId)}
       >
-        Delete Contract {isDeleting && <Spinner />}
+        <MdDelete /> Delete Contract {isDeleting && <Spinner />}
       </button>
       {error && <p className="text-sm">{error}</p>}
     </>

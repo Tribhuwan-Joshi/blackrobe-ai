@@ -31,6 +31,8 @@ const Sidebar = async ({ email }: { email: string }) => {
         </div>
       </div>
       <div className="flex flex-col items-center gap-4">
+        <p>Plan type - Free</p>
+        <p>Contract(s) left - 3</p>
         <p> {email}</p>
         <LogoutBtn />
         <div className="flex gap-3 items-center my-3">

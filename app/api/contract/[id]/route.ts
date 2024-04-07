@@ -12,7 +12,7 @@ export async function DELETE(
     if (!contract) return NextResponse.json({}, { status: 404 });
 
     await prisma.contract.delete({ where: { id: params.id } });
-    console.log("Deleted succ");
+
     return NextResponse.json({}, { status: 200 });
   } catch (err) {
     console.log("Error");
