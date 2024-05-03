@@ -8,7 +8,6 @@ import { Contract } from "@prisma/client";
 
 const openai = new OpenAI();
 async function getResponse(info: { text: string }) {
-  console.log(info);
   const response = await openai.chat.completions.create({
     messages: [
       {
@@ -36,6 +35,6 @@ export async function POST(request: NextRequest) {
   const contract: Contract = await prisma.contract.create({
     data: { content: aiResponse!, userEmail: session.user?.email! },
   });
-  console.log("Contract id is", contract);
+
   return NextResponse.json({ aiResponse, contract }, { status: 201 });
 }

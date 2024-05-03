@@ -119,7 +119,6 @@ const ChatContainer = () => {
         );
       }
     }
-    console.log("Messages are ", messages);
   };
 
   useEffect(() => {

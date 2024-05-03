@@ -31,7 +31,7 @@ export default function BotReply({
       } = await axios.post("/api/contract", { text });
       if (res.status === 201) {
         setText(res.data.aiResponse);
-        console.log("inside botreply ", res.data.contract);
+
         router.push(`/contracts/${res.data.contract.id}`);
         setHasResponseBeenGenerated(true);
       }
